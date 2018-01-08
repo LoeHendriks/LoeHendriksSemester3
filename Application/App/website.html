@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <H>Application Loe & Roy</H>
+        <H2>Status Controller</H2>
+    </head>
+    
+    
+    <form>
+        <iframe src="http://10.0.0.42/cgi-bin/ReadingProgram.cgi" id="ButtonStateFrame" style="width:50%;height:75%;"></iframe>
+    </form>
+    
+    <form>
+        <div>
+            <button onclick="Rumble()"> Start Rumbling </button>
+            <button onclick="RumbleStop()"> Stop Rumbling </button>
+            <br>
+            <br>
+            <button onclick="Rotate()"> Start Rotate</button>
+
+        </div>
+    </form>
+    
+    <script>
+        setInterval(function(){
+         // Refresh ButtonStateFrame every second
+         $( '#ButtonStateFrame' ).attr( 'src', function ( i, val ) { return val; });
+        }, 1000);
+                    
+        function Rumble() {
+            $.get("http://10.0.0.42/cgi-bin/ReadingProgram.cgi?m=1");
+        }
+
+        function RumbleStop() {
+            $.get("http://10.0.0.42/cgi-bin/ReadingProgram.cgi?m=3");
+        }
+    
+        function Rotate() {
+             $.get("http://10.0.0.42/cgi-bin/ReadingProgram.cgi?m=2");
+        }
+    </script>
+    
+</html>
